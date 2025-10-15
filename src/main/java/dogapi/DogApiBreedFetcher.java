@@ -42,11 +42,11 @@ public class DogApiBreedFetcher implements BreedFetcher {
                 final JSONArray breeds = responseBody.getJSONArray("message");
                 List<String> breedList = new ArrayList<>();
                 for (int i = 0; i < breeds.length(); i++) {
-                    breedList.add(breeds.getJSONObject(i).toString());
+                    breedList.add(breeds.get(i).toString());
                 }
                 return breedList;
             }else {
-                throw new BreedNotFoundException(breed);
+                throw new BreedNotFoundException("Breed Not Found");
             }
         }
         catch(IOException | BreedNotFoundException event){
